@@ -159,10 +159,11 @@ Upload a CSV → Get MIT-BIH prediction
 
 # 📸 Screenshots 
 
+![Dashboard](assets/DASHBOARD.png)
 
-![Dashboard] (assets/DASHBOARD.png)
-![PTBXL Model] (assets/PTBXL.png)
-![MITBIH Model] (assets/MITBIH.png)
+![PTBXL Model](assets/PTBXL.png)
+
+![MITBIH Model](assets/MITBIH.png)
 
 
 ---
