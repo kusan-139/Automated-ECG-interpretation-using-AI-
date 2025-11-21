@@ -12,3 +12,4 @@ tensorboard
 wfdb
 tqdm
 pytest
+gunicorn
