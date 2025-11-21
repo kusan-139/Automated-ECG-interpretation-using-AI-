@@ -157,13 +157,12 @@ Upload a CSV → Get MIT-BIH prediction
 ---
 
 
-# 📸 Screenshots (Optional)
+# 📸 Screenshots 
 
 ```
-/screenshots
-  ptbxl_viewer.png
-  mitbih_viewer.png
-  prediction_output.png
+![Dashboard] (assets/DASHBOARD.png)
+![PTBXL Model] (assets/PTBXL.png)
+![MITBIH Model] (assets/MITBIH.png)
 ```
 
 ---
