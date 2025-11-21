@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>PTB-XL ECG (Single-lead Viewer with 12-lead Navigation)</title>
+  <link rel="stylesheet" href="/static/css/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="banner">
+    ⚠ Research prototype only. NOT for medical or diagnostic use. Predictions may be wrong. For any health concerns, consult a qualified medical professional.
+  </div>
+
+  <main class="container">
+    <h1>PTB-XL ECG Classification (Research-Only)</h1>
+
+    <!-- Upload + analyze -->
+    <section class="card">
+      <h2>Upload ECG CSV</h2>
+
+      <div class="action-row">
+        <input id="ptbxl-file" type="file" accept=".csv" />
+        <button id="ptbxl-analyze-btn">Analyze ECG (PTB-XL)</button>
+      </div>
+
+      <p class="note">This is a research-only tool. Do not use it for any medical decisions.</p>
+    </section>
+
+    <!-- Waveform preview -->
+    <section class="card">
+      <h2>Waveform Preview (12 leads)</h2>
+
+      <!-- Header: Lead Info -->
+      <div class="waveform-header-row">
+        <div class="lead-info">
+          <span id="lead-color-dot"></span>
+          <span id="lead-name">Lead 1 – I</span>
+          <span id="lead-index-label" style="color:#6b7280;font-size:0.9rem;">
+            (index 0)
+          </span>
+        </div>
+      </div>
+
+      <!-- Zoom Controls -->
+      <div class="zoom-controls">
+        <button class="zoom-btn" id="zoom-in-btn">＋ Zoom In</button>
+        <button class="zoom-btn" id="zoom-out-btn">－ Zoom Out</button>
+      </div>
+
+      <!-- Waveform + Vertical Slider (Flexbox Layout) -->
+      <div class="waveform-box">
+        <!-- Chart Container -->
+        <div class="chart-container">
+          <canvas id="ptbxl-waveform"></canvas>
+        </div>
+
+        <!-- Vertical Slider -->
+        <input
+          id="ptbxl-y-slider"
+          class="vertical-slider"
+          type="range"
+          min="0"
+          max="100"
+          value="50"
+        />
+      </div>
+
+      <!-- Horizontal Slider -->
+      <div class="horizontal-slider-row">
+        <input
+          id="ptbxl-x-slider"
+          type="range"
+          min="0"
+          max="100"
+          value="50"
+        />
+      </div>
+
+      <!-- Navigation Arrows (Bottom) -->
+      <div class="waveform-nav">
+        <button class="arrow-btn" id="lead-prev" title="Previous lead">
+          &#9664;
+        </button>
+        <span style="font-size:0.95rem;color:#4b5563;">
+          Use arrows to view each lead (1–12)
+        </span>
+        <button class="arrow-btn" id="lead-next" title="Next lead" style="padding-left: 2px;">
+          &#9654;
+        </button>
+      </div>
+    </section>
+
+    <!-- Prediction -->
+    <section class="card">
+      <h2>Prediction</h2>
+      <p id="ptbxl-prediction">No prediction yet.</p>
+
+      <h3>Class Probabilities</h3>
+      <canvas id="ptbxl-probabilities"></canvas>
+
+      <!-- Legend under the chart -->
+      <div id="ptbxl-class-legend" class="class-legend"></div>
+    </section>
+  </main>
+
+  <script src="/static/js/ptbxl_stacked.js"></script>
+</body>
+</html>

@@ -1,0 +1,265 @@
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  margin: 0;
+  background: #f4f4f7;
+  color: #222;
+}
+
+.banner {
+  background: #ffe1a8;
+  color: #7a3b00;
+  padding: 12px 16px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.container {
+  max-width: 960px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+h1, h2, h3 {
+  margin-top: 0;
+}
+
+/* Card styling */
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  font-family: sans-serif;
+  border: 1px solid #ddd;
+  max-width: 1500px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: none;
+  background: #2563eb;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.btn:hover {
+  background: #1d4ed8;
+}
+
+/* Analyze button specific */
+#ptbxl-analyze-btn {
+  background-color: #1d63ed;
+  color: white;
+  font-family: sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#ptbxl-analyze-btn:hover {
+  background-color: #154bbd;
+}
+
+/* Text & notes */
+.note {
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 8px;
+}
+
+#ptbxl-prediction,
+#mitbih-prediction {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+/* Class legend under probability charts */
+.class-legend {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+.class-legend ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0.25rem 0 0 0;
+}
+.class-legend li {
+  margin-bottom: 0.15rem;
+}
+
+/* File input + button row */
+.action-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+/* Zoom buttons (shared) */
+.zoom-btn {
+  padding: 6px 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+.zoom-btn:hover {
+  background: #1e4fcf;
+}
+
+/* Chart container in flex layout */
+.chart-container {
+  flex: 1;
+  min-width: 0;    /* Important for Chart.js inside flex */
+  height: 100%;
+  position: relative;
+}
+
+/* Shared waveform viewer styles (PTB-XL & MIT-BIH) */
+.waveform-box {
+  display: flex;           /* canvas + slider side by side */
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  height: 260px;
+  margin-top: 10px;
+}
+
+/* Header row above waveform */
+.waveform-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+/* Lead info (colored dot + text) */
+.lead-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+/* Lead color dots */
+#lead-color-dot,
+#mit-lead-color-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: #1f77b4;
+  border: 1px solid #11182720;
+}
+
+/* Actual canvas size inside waveform */
+#ptbxl-waveform,
+#mitbih-waveform {
+  width: 100%;
+  height: 100%;
+}
+
+/* Zoom controls row */
+.zoom-controls {
+  margin-top: 10px;
+  margin-bottom: 6px;
+  display: flex;
+  gap: 8px;
+}
+
+/* Vertical slider (for Y pan) */
+.vertical-slider {
+  width: 24px;
+  height: 200px;
+  writing-mode: bt-lr;
+  -webkit-appearance: slider-vertical;
+}
+
+/* Horizontal slider (for X pan) */
+.horizontal-slider-row {
+  margin-top: 8px;
+  display: flex;
+  justify-content: center;
+}
+
+.horizontal-slider-row input {
+  width: 80%;
+}
+
+/* Navigation arrows row (PTB-XL bottom) */
+.waveform-nav,
+.mit-nav-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.mit-arrow-inline-text {
+  font-size: 0.95rem;
+  color: #4b5563;
+}
+
+/* Arrow buttons */
+.arrow-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  border: none;
+  background: #2563eb;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  line-height: 1;
+}
+
+.arrow-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* (Legacy) MIT-BIH vertical pan layout (safe to keep if used elsewhere) */
+.mit-waveform-layout {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.y-slider-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.75rem;
+  color: #4b5563;
+}
+
+#mit-y-offset {
+  writing-mode: bt-lr;
+  -webkit-appearance: slider-vertical;
+  width: 24px;
+  height: 180px;
+  margin-bottom: 4px;
+}

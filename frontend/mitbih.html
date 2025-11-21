@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>MIT-BIH ECG Research Demo</title>
+  <link rel="stylesheet" href="/static/css/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="banner">
+    ⚠ Research prototype only. NOT for medical or diagnostic use.
+    Predictions may be wrong. For any health concerns, consult a qualified medical professional.
+  </header>
+
+  <main class="container">
+    <h1>MIT-BIH Beat Classification (Research-Only)</h1>
+    <p>
+      Upload a beat-level ECG segment as CSV with
+      <strong>2 columns</strong> (Lead MLII and Lead V1).
+      The model returns beat-level arrhythmia classes.
+    </p>
+
+    <section class="card">
+      <h2>Upload Beat CSV</h2>
+
+      <div class="action-row">
+        <input type="file" id="mitbih-file" accept=".csv" />
+        <button id="mitbih-analyze-btn" class="btn">Analyze Beat (MIT-BIH)</button>
+      </div>
+
+      <p class="note">
+        This is a research-only tool. Do not use it for any medical decisions.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Waveform Preview (2 leads)</h2>
+
+      <!-- Header Row: Lead info ONLY -->
+      <div class="waveform-header-row">
+        <div class="lead-info">
+          <span id="mit-lead-color-dot"></span>
+          <span id="mit-lead-name">Lead 1 – MLII</span>
+          <span id="mit-lead-index" style="color:#6b7280;font-size:0.9rem;">
+            (index 0)
+          </span>
+        </div>
+      </div>
+
+      <!-- Zoom buttons -->
+      <div class="zoom-controls">
+        <button class="zoom-btn" id="mit-zoom-in-btn">＋ Zoom In</button>
+        <button class="zoom-btn" id="mit-zoom-out-btn">－ Zoom Out</button>
+      </div>
+
+      <!-- Chart + vertical slider (Flexbox Layout) -->
+      <div class="waveform-box">
+        <!-- Chart container -->
+        <div class="chart-container">
+          <canvas id="mitbih-waveform"></canvas>
+        </div>
+
+        <!-- Vertical slider -->
+        <input
+          type="range"
+          id="mit-vertical-slider"
+          class="vertical-slider"
+          min="-50"
+          max="50"
+          value="0"
+          step="1"
+        />
+      </div>
+
+      <!-- horizontal pan slider -->
+      <div class="horizontal-slider-row">
+        <input
+          type="range"
+          id="mit-horizontal-slider"
+          min="0"
+          max="100"
+          value="0"
+          step="1"
+        />
+      </div>
+
+      <!-- Arrows at the bottom -->
+      <div class="mit-nav-bottom">
+        <button class="arrow-btn" id="mit-lead-prev" title="Previous lead">
+          &#9664;
+        </button>
+        <span class="mit-arrow-inline-text">Use arrows to view MLII and V1</span>
+        <button class="arrow-btn" id="mit-lead-next" title="Next lead" style="padding-left: 2px;">
+          &#9654;
+        </button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Prediction</h2>
+      <div id="mitbih-prediction"></div>
+      <h3>Class Probabilities</h3>
+      <canvas id="mitbih-probabilities"></canvas>
+      <div id="mitbih-class-legend" class="class-legend mt-3"></div>
+    </section>
+  </main>
+
+  <script src="/static/js/mitbih.js"></script>
+</body>
+</html>

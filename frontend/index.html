@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ECG Research Dashboard</title>
+  <link rel="stylesheet" href="static/css/styles.css" />
+</head>
+<body>
+  <header class="banner">
+    ⚠ Research prototype only. NOT for medical or diagnostic use.
+    Predictions may be wrong. For any health concerns, consult a qualified medical professional.
+  </header>
+
+  <main class="container">
+    <h1>Automated ECG Interpretation (Research-Only)</h1>
+    <p>
+      This dashboard demonstrates deep learning models trained on PTB-XL and MIT-BIH ECG datasets.
+      It is strictly for educational and research purposes.
+    </p>
+
+        <div class="card" id="ptbxl-card">
+      <h2>PTB-XL Model (Record-level ECG Classification)</h2>
+      <p>Upload ECG segments as CSV and view model predictions.</p>
+      <a href="ptbxl.html" class="btn">Go to PTB-XL Demo</a>
+    </div>
+
+        <div class="card" id="mitbih-card">
+      <h2>MIT-BIH Model (Beat-level Classification)</h2>
+      <p>Upload single-beat segments and view arrhythmia-class predictions.</p>
+      <a href="mitbih.html" class="btn">Go to MIT-BIH Demo</a>
+    </div>
+
+    <script>
+    // Auto-hide cards for missing models
+    fetch("/api/health")
+        .then(res => res.json())
+        .then(data => {
+            if (!data.ptbxl_model_loaded) {
+                document.getElementById("ptbxl-card").style.display = "none";
+            }
+            if (!data.mitbih_model_loaded) {
+                document.getElementById("mitbih-card").style.display = "none";
+            }
+        })
+        .catch(err => console.error("Health check failed:", err));
+    </script>
+
+  </main>
+</body>
+</html>
